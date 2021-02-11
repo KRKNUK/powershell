@@ -1,0 +1,2 @@
+# This can be used within AWS Cloud Shell to import current console user creds.
+Invoke-RestMethod -Headers @{'X-aws-ec2-metadata-token'= $env:AWS_CONTAINER_AUTHORIZATION_TOKEN} -uri $env:AWS_CONTAINER_CREDENTIALS_FULL_URI | %{Set-AWSCredential -AccessKey $_.AccessKeyId -Secret $_.SecretAccessKey -SessionToken $_.Token}
